@@ -1,0 +1,33 @@
+name: Unpake_payload
+on: push
+jobs:
+  Unpack:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Installation depends
+      run: |
+        sudo apt-get update
+        sudo apt-get -y install python3 python-pip
+        pip3 install protobuf
+    - name: Clone source code
+      run: |
+        git clone https://github.com/vm03/payload_dumper.git payload
+        cd payload
+        wget -O miui.zip `cat $GITHUB_WORKSPACE/link`
+    - name: Unpak miui
+      run: |
+        cd payload
+        unzip miui.zip
+    - name: Unpak payload
+      run: |
+        cd payload
+        python3 payload_dumper.py payload.bin
+    - name: View
+      run: |
+       ls payload
+       ls payload/output
+    - name : Upload artifact
+      uses: actions/upload-artifact@master
+      with:
+        name: boot
+        path: payload/output/boot.img
