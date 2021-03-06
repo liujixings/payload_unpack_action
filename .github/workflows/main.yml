@@ -9,17 +9,13 @@ jobs:
         sudo apt-get update
         sudo apt-get -y install git python3 python3-pip
         pip3 install protobuf
-    - name: Checkout
-      uses: actions/checkout@v2.3.4
-      with:
-          ref: master
     - name: Clone source code
       run: |
         git clone https://github.com/vm03/payload_dumper.git payload
-        ls
+        https://github.com/liujixings/payload_unpack_action.git link
+        cp ./link/link ./payload/link
         cd payload
-        ls
-        wget -O miui.zip `cat $GITHUB_WORKSPACE/link`
+        wget -O miui.zip `cat ./link`
     - name: Unpak miui
       run: |
         cd payload
