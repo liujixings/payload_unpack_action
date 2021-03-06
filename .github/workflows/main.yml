@@ -12,7 +12,9 @@ jobs:
     - name: Clone source code
       run: |
         git clone https://github.com/vm03/payload_dumper.git payload
+        ls
         cd payload
+        ls
         wget -O miui.zip `cat $GITHUB_WORKSPACE/link`
     - name: Unpak miui
       run: |
