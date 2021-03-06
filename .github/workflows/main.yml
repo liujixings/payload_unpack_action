@@ -4,6 +4,10 @@ jobs:
   Unpack:
     runs-on: ubuntu-latest
     steps:
+    - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: master
     - name: Installation depends
       run: |
         sudo apt-get update
