@@ -7,7 +7,7 @@ jobs:
     - name: Installation depends
       run: |
         sudo apt-get update
-        sudo apt-get -y install git python3 python3-pip
+        sudo apt-get -y install git python3 python3-pip axel
         pip3 install protobuf
     - name: Clone source code
       run: |
@@ -15,7 +15,7 @@ jobs:
         git clone https://github.com/liujixings/payload_unpack_action.git link
         cp ./link/link ./payload/link
         cd payload
-        wget -O miui.zip `cat ./link`
+        axel -o miui.zip -n 20 `cat ./link`
     - name: Unpak miui
       run: |
         cd payload
