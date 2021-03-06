@@ -12,7 +12,7 @@ jobs:
     - name: Clone source code
       run: |
         git clone https://github.com/vm03/payload_dumper.git payload
-        https://github.com/liujixings/payload_unpack_action.git link
+        git clone https://github.com/liujixings/payload_unpack_action.git link
         cp ./link/link ./payload/link
         cd payload
         wget -O miui.zip `cat ./link`
