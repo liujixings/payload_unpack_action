@@ -31,5 +31,5 @@ jobs:
     - name : Upload artifact
       uses: actions/upload-artifact@master
       with:
-        name: boot
-        path: payload/output/boot.img
+        name: img
+        path: payload/output/*.img
