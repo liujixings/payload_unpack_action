@@ -20,16 +20,16 @@ jobs:
       run: |
         cd payload
         unzip miui.zip
+        rm -rf miui.zip
     - name: Unpak payload
       run: |
         cd payload
         python3 payload_dumper.py payload.bin
-    - name: View
-      run: |
-       ls payload
-       ls payload/output
+        rm -rf payload.bin
+        tar -zcvf output.tgz output/
     - name : Upload artifact
       uses: actions/upload-artifact@master
       with:
         name: img
-        path: payload/output/*.img
+        path: payload/output.tgz
+
