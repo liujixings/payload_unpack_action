@@ -20,10 +20,12 @@ jobs:
       run: |
         cd payload
         unzip miui.zip
+        rm -rf miui.zip
     - name: Unpak payload
       run: |
         cd payload
         python3 payload_dumper.py payload.bin
+        rm -rf payload.bin
     - name: View
       run: |
        ls payload
