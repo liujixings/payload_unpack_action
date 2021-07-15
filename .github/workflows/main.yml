@@ -15,13 +15,16 @@ jobs:
         cp ./link/link ./payload/link
         cd payload
         pip3 install -r requirements.txt
+    - name: Download MIUI_FULL_OTA
+      run: |
+        cd payload
         axel -q -o miui.zip -n 64 `cat ./link`
-    - name: Unpak miui
+    - name: Unpack MIUI_FULL_OTA
       run: |
         cd payload
         unzip miui.zip
         rm -rf miui.zip
-    - name: Unpak payload
+    - name: Unpack payload
       run: |
         cd payload
         python3 payload_dumper.py payload.bin --images boot.img
