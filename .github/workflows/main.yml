@@ -24,7 +24,7 @@ jobs:
     - name: Unpak payload
       run: |
         cd payload
-        python3 payload_dumper.py payload.bin
+        python3 payload_dumper.py payload.bin boot.img
         rm -rf payload.bin
     - name: View
       run: |
